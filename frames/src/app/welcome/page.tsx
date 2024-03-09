@@ -8,7 +8,7 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Welcome`,
+    src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Welcome`,
   },
   postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-deposit`,
 })

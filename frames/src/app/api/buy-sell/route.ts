@@ -9,15 +9,16 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       buttons: [
         {
           label: "Buy Low",
+
         },
         {
           label: "Sell High",
+
         },
       ],
       image: {
         src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Buy-or-Sell`,
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy`,
     })
   );
 }

@@ -10,10 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chainlink/contracts": "^0.8.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@pancakeswap/pancake-swap-lib": "^0.0.4",
+    "@uniswap/lib": "^4.0.1-alpha",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "dotenv": "^16.4.5",
     "hardhat": "^2.21.0"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0"
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "typescript": "^5.4.2"
   }
 }

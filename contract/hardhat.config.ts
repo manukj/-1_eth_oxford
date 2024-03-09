@@ -1,6 +1,6 @@
-import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import dotEnv from "dotenv";
+import { HardhatUserConfig } from "hardhat/config";
 dotEnv.config();
 
 const config: HardhatUserConfig = {

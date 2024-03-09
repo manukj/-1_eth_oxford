@@ -8,9 +8,9 @@ const frameMetadata = getFrameMetadata({
     },
   ],
   image: {
-    src: `${process.env.NEXT_PUBLIC_SITE_URL}/site-preview.jpg`,
+    src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Welcome`,
   },
-  postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/advanced`,
+  postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-deposit`,
 })
 
 export const metadata: Metadata = {

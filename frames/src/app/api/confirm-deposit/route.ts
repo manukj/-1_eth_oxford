@@ -9,13 +9,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       getFrameHtmlResponse({
         buttons: [
           {
-            label: 'Deposit Funds',
+            label: 'Agree and Continue',
           },
         ],
         image: {
-          src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Welcome`,
+          src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Confirm-Deposit`,
         },
-        postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/advanced`,
+        postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy-sell`,
       })
     )
 }

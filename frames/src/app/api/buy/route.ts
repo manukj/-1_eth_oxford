@@ -21,9 +21,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Select-Margin`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Buy`,
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-deposit`,
+      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order`,
     })
   );
 }

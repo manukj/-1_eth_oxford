@@ -8,18 +8,22 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: "Buy Low",
-          
+          label: "20%",
         },
         {
-          label: "Sell High",
+          label: "40%",
+        },
+        {
+          label: "60%",
+        },
+        {
+          label: "80%",
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/buy-or-sell?title=''`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Sell`,
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy`,
-
+      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order`,
     })
   );
 }

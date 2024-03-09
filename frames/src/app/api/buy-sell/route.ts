@@ -17,7 +17,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/og?title=Buy-or-Sell`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/buy-or-sell?title=Buy-or-Sell`,
       },
     })
   );

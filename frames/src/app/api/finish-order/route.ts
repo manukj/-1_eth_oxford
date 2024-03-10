@@ -21,9 +21,10 @@ async function initContract() {
 
 async function placeOrderToSellEthLow(contract: Contract, signer: Signer) {
   // place the order with amount and margin
+  const amountInEther = ethers.utils.parseEther(amount.toString());
   const tx = await contract
     .connect(signer)
-    .placeOrderToSellEthLow(amount, margin);
+    .placeOrderToSellEthLow(amountInEther, margin);
   return tx;
 }
 
@@ -33,19 +34,23 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   amount = parseFloat(searchParams.get("depositAmount") ?? "0.1");
   margin = parseFloat(searchParams.get("margin") ?? "0.2");
 
-  // get the signer hardcoding the private key
-  const signer = await initSigner();
-  // init the contract
-  const contract = await initContract();
-  // place the order
-  const tx = await placeOrderToSellEthLow(contract, signer);
-  await tx.wait();
-
-  // once the order is placed, now execute a corn job after 6 days to execute the order at the targetted price
-  cron.schedule("0 0 0 */6 * *", async () => {
-    const tx = await contract.connect(signer).executeOrder();
+  try {
+    // get the signer hardcoding the private key
+    const signer = await initSigner();
+    // init the contract
+    const contract = await initContract();
+    // place the order
+    const tx = await placeOrderToSellEthLow(contract, signer);
     await tx.wait();
-  });
+
+    // once the order is placed, now execute a corn job after 6 days to execute the order at the targetted price
+    cron.schedule("0 0 0 */6 * *", async () => {
+      const tx = await contract.connect(signer).executeOrder();
+      await tx.wait();
+    });
+  } catch (e) {
+    console.log(e);
+  }
 
   const body: FrameRequest = await req.json();
   return new NextResponse(

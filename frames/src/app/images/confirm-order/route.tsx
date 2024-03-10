@@ -107,7 +107,7 @@ export async function GET(request: Request) {
                 textDecoration: "underline",
               }}
             >
-              {parseFloat(ethHigh ?? "0").toFixed(2)} USDC
+              {parseFloat(ethHigh ?? "0").toFixed(4)} USDC
             </span>
           </p>
           <p
@@ -131,7 +131,7 @@ export async function GET(request: Request) {
                 textDecoration: "underline",
               }}
             >
-              {parseFloat(ethLow ?? "0").toFixed(2)} ETH
+              {parseFloat(ethLow ?? "0").toFixed(4)} ETH
             </span>
           </p>
           <p

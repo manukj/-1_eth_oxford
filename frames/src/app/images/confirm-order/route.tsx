@@ -24,6 +24,12 @@ export async function GET(request: Request) {
             ? searchParams.get('ethpricelow')?.slice(0, 100)
             : ''
 
+            
+        const hasTarget = searchParams.has('target')
+        const tar = hasTarget
+            ? searchParams.get('target')?.slice(0, 100)
+            : ''
+
         return new ImageResponse(
             (
                 <div
@@ -35,7 +41,7 @@ export async function GET(request: Request) {
                         justifyContent: 'center',
                         flexDirection: 'column',
                         backgroundImage: 'linear-gradient(to bottom, #dbf4ff, #fff1f1)',
-                        fontSize: 80,
+                        fontSize: 30,
                         fontWeight: 700,
                         textAlign: 'center',
                     }}
@@ -46,12 +52,12 @@ export async function GET(request: Request) {
                                 'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
                             backgroundClip: 'text',
                             color: 'transparent',
-                            fontSize: 80,
+                            fontSize: 30,
                             fontWeight: 700,
                             margin: 0,
                         }}
                     >
-                        Current : {eth} USDC
+                        Current : {eth} USDC/ETH
                     </p>
                     <p
                         style={{
@@ -59,13 +65,13 @@ export async function GET(request: Request) {
                                 'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
                             backgroundClip: 'text',
                             color: 'transparent',
-                            fontSize: 80,
+                            fontSize: 30,
                             fontWeight: 700,
                             margin: 0,
                             marginTop: 20,
                         }}
                     >
-                        High : {ethHigh} USDC
+                        Target : {tar} USDC/ETH
 
                     </p>
                     <p
@@ -74,13 +80,14 @@ export async function GET(request: Request) {
                                 'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
                             backgroundClip: 'text',
                             color: 'transparent',
-                            fontSize: 80,
+                            fontSize: 30,
                             fontWeight: 700,
                             margin: 0,
                             marginTop: 20,
                         }}
                     >
-                        Low : {ethLow} ETH
+                        Above Margin : {ethHigh} USDC
+
                     </p>
                     <p
                         style={{
@@ -88,13 +95,27 @@ export async function GET(request: Request) {
                                 'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
                             backgroundClip: 'text',
                             color: 'transparent',
-                            fontSize: 80,
+                            fontSize: 30,
                             fontWeight: 700,
                             margin: 0,
                             marginTop: 20,
                         }}
                     >
-                      On Hold : 6 days
+                        Below Margin : {ethLow} ETH
+                    </p>
+                    <p
+                        style={{
+                            backgroundImage:
+                                'linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))',
+                            backgroundClip: 'text',
+                            color: 'transparent',
+                            fontSize: 30,
+                            fontWeight: 700,
+                            margin: 0,
+                            marginTop: 20,
+                        }}
+                    >
+                      Time period : 6 days
 
                     </p>
                 </div>

@@ -10,12 +10,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const response = await fetch(url);
   const data = await response.json();
   const usd = data.result.ethusd;   
-  const ethAmount = parseFloat(deposit) * parseFloat(usd);
+  const ethAmount = parseFloat(usd);
   console.log("depo"+deposit);
   console.log("usd"+usd);
 
   console.log("ethamount"+ethAmount);
-  const ethAmountHigh = ethAmount + (ethAmount * 0.2);
+  const ethAmountTargettedPrice= ethAmount + (ethAmount * 0.2);
+  const usdcAbove= parseFloat(deposit)  * ethAmountTargettedPrice;
   const ethAmountLow = parseFloat(deposit) + 0.01;
 
 
@@ -28,7 +29,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-order?ethprice=${ethAmount}&ethpricehigh=${ethAmountHigh}&ethpricelow=${ethAmountLow}`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-order?ethprice=${ethAmount}&ethpricehigh=${usdcAbove}&ethpricelow=${ethAmountLow}&usdcabove=${usdcAbove}&target=${ethAmountTargettedPrice}`,
       },
       postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/stats`,
     })

@@ -16,7 +16,8 @@
     "@uniswap/lib": "^4.0.1-alpha",
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "dotenv": "^16.4.5",
-    "hardhat": "^2.21.0"
+    "hardhat": "^2.21.0",
+    "node-cron": "^3.0.3"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",

@@ -2,6 +2,7 @@ import { FrameRequest, getFrameHtmlResponse } from "@coinbase/onchainkit/frame";
 import { Contract, Signer } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
 import { DualProfitABI } from "./DualProfitAbi";
+const cron = require("node-cron");
 const ethers = require("ethers");
 
 const { TEST_PRIVATE_KEY, SEPOLIA_RPC_URL } = process.env;
@@ -20,7 +21,9 @@ async function initContract() {
 
 async function placeOrderToSellEthLow(contract: Contract, signer: Signer) {
   // place the order with amount and margin
-  const tx = await contract.connect(signer).placeOrderToSellEthLow(amount, margin);
+  const tx = await contract
+    .connect(signer)
+    .placeOrderToSellEthLow(amount, margin);
   return tx;
 }
 
@@ -36,6 +39,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const contract = await initContract();
   // place the order
   const tx = await placeOrderToSellEthLow(contract, signer);
+  await tx.wait();
+
+  // once the order is placed, now execute a corn job after 6 days to execute the order at the targetted price
+  cron.schedule("0 0 0 */6 * *", async () => {
+    const tx = await contract.connect(signer).executeOrder();
+    await tx.wait();
+  });
 
   const body: FrameRequest = await req.json();
   return new NextResponse(

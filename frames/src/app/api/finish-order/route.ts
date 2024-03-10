@@ -56,7 +56,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   return new NextResponse(
     getFrameHtmlResponse({
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Statistics`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/finish-order?title=Statistics`,
       },
     })
   );

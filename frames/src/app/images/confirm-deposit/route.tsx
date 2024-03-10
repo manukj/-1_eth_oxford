@@ -22,7 +22,7 @@ export async function GET(request: Request) {
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
-            backgroundImage: `url('${process.env.NEXT_PUBLIC_SITE_URL}/background.png')`,
+            backgroundImage: `url('${process.env.NEXT_PUBLIC_SITE_URL}/confirm_deposite.png')`,
             backgroundSize: "100% 100%", 
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -33,17 +33,27 @@ export async function GET(request: Request) {
         >
           <p
             style={{
-              backgroundImage:
-                "linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))",
-              backgroundClip: "text",
-              color: "transparent",
+              color: "white",
               fontSize: 80,
-              fontWeight: 700,
+              fontWeight: 800,
               margin: 0,
+              marginBottom: 10,
             }}
           >
-            {walletAddress.length > 10
-              ? `${walletAddress.substring(0, 10)}...`
+            Verify your details
+          </p>
+
+          <p
+            style={{
+              color: "white",
+              fontSize: 35,
+              fontWeight: 600,
+              margin: 0,
+              textDecoration: "underline",
+            }}
+          >
+           Wallet Address : {walletAddress.length > 10
+              ? `${walletAddress.substring(0, 18)}...`
               : walletAddress}{" "}
           </p>
           {walletBalance && (

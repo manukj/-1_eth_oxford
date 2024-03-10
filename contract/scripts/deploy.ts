@@ -1,22 +1,17 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  var usdcTokenAddress = "0x51fCe89b9f6D4c530698f181167043e1bB4abf89"; // USDC token address on Sepolia testnet
+  var ethTokenAddress = "0xb16F35c0Ae2912430DAc15764477E179D9B9EbEa"; // WETH token address on Sepolia testnet
+  //deploy DualInvestment
+  const dualInvestment = await ethers.deployContract("DualInvestment", [
+    usdcTokenAddress,
+    ethTokenAddress,
+  ]);
 
-  const lockedAmount = ethers.parseEther("0.001");
+  await dualInvestment.waitForDeployment();
 
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  console.log(`DualInvestment deployed to ${dualInvestment.target}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

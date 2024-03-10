@@ -31,13 +31,13 @@ contract DualInvestment {
         gonisisStaking = new GnosisStaking(_ethTokenAddress);
     }
 
-    function getLatestPrice() public view returns (int) {
+    function getLatestETHPrice() public view returns (int) {
         (, int price, , , ) = priceFeed.latestRoundData();
         return price;
     }
 
     function placeOrderToSellEthLow(uint256 _amount, uint256 _margin) public {
-        int ethPrice = getLatestPrice();
+        int ethPrice = getLatestETHPrice();
         uint256 ethAmount = _amount / uint256(ethPrice);
         IERC20(ethTokenAddress).transferFrom(
             msg.sender,
@@ -47,7 +47,7 @@ contract DualInvestment {
 
         // stake the coin in gonisis staking contract
         gonisisStaking.stake(ethAmount);
-        
+
         orders[msg.sender] = Order(
             msg.sender,
             ethAmount,
@@ -67,7 +67,7 @@ contract DualInvestment {
         gonisisStaking.withdraw(order.ethAmount);
 
         // Check if the current ETH price has reached the desired margin
-        uint256 currentEthInUSDPrice = uint256(getLatestPrice());
+        uint256 currentEthInUSDPrice = uint256(getLatestETHPrice());
         uint256 currentUsdcAmount = currentEthInUSDPrice * order.ethAmount;
         uint256 originalUsdcAmount = order.ethPriceAtOrder * order.ethAmount;
         uint256 gain = (currentUsdcAmount * 100) / originalUsdcAmount;

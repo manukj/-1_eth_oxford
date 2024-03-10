@@ -63,13 +63,13 @@ export async function GET(request: Request) {
                   "linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))",
                 backgroundClip: "text",
                 color: "transparent",
-                fontSize: 80,
+                fontSize: 75,
                 fontWeight: 700,
                 margin: 0,
                 marginTop: 20,
               }}
             >
-              {walletBalance}
+              Balance : {walletBalance}
             </p>
           )}
         </div>

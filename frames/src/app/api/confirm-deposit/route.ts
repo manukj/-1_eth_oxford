@@ -42,7 +42,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-deposit?walletBalance=Balance${walletBalance}&walletAddress=${WALLET_ADDRESS}`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-deposit?walletBalance=${walletBalance}&walletAddress=${WALLET_ADDRESS}`,
       },
       postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy-sell`,
     })

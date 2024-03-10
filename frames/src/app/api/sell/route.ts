@@ -22,7 +22,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Sell`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/sell?title=Sell`,
       },
       input: {
         text: 'Your Deposit Amount',

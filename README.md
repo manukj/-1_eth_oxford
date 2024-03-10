@@ -14,7 +14,9 @@ Imagine trading a coin with a certain margin. What if I told you that you could 
 
 **HOW?**
 
-![Blank diagram](https://github.com/manukj/-1_eth_oxford/assets/22499119/b075d46b-8832-425d-b0bf-0ebfeeb8cc7d)
+![1](https://github.com/manukj/-1_eth_oxford/assets/22499119/aa205568-b91b-4d4e-a228-a36c31fd82b2)
+
+
 
 Let's understand the flowchart with an example of selling  ETH for USDC with a margin of 10%:
 
@@ -35,8 +37,7 @@ Let's understand the flowchart with an example of selling  ETH for USDC with a m
 
 **Same Goes with Buy At Low **
 
-![Blank diagram-2](https://github.com/manukj/-1_eth_oxford/assets/22499119/740fef3e-f1c3-4e18-9c4d-7849377a49e5)
-
+![2](https://github.com/manukj/-1_eth_oxford/assets/22499119/ebf30440-5ebd-4032-98b4-983a187a77c3)
 
 
 This way, the user profits even if the set margin is reached or not.

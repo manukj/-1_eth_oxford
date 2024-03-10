@@ -67,8 +67,8 @@ export async function GET(request: Request) {
               textDecoration: "underline",
             }}
           >
-            Targeting Price :{" "}{parseFloat(tar ?? "0").toFixed(2)}{" "}
-            USDC{" ( After 20% margin )"}
+            Targeting Price : {parseFloat(tar ?? "0").toFixed(2)} USDC
+            {" ( After 20% margin )"}
           </p>
           <hr></hr>
 
@@ -99,7 +99,14 @@ export async function GET(request: Request) {
             }}
           >
             Price &gt;= Margin:
-            <span style={{ fontWeight: 900, marginLeft: 5, fontSize: 35 }}>
+            <span
+              style={{
+                fontWeight: 900,
+                marginLeft: 10,
+                fontSize: 35,
+                textDecoration: "underline",
+              }}
+            >
               {parseFloat(ethHigh ?? "0").toFixed(2)} USDC
             </span>
           </p>
@@ -116,7 +123,14 @@ export async function GET(request: Request) {
             }}
           >
             Price &lt;= Margin:
-            <span style={{ fontWeight: 900, marginLeft: 5, fontSize: 35 }}>
+            <span
+              style={{
+                fontWeight: 900,
+                marginLeft: 10,
+                fontSize: 35,
+                textDecoration: "underline",
+              }}
+            >
               {parseFloat(ethLow ?? "0").toFixed(2)} ETH
             </span>
           </p>

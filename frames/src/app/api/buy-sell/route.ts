@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
-
+  const { untrustedData } = body;
+    
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
@@ -18,7 +19,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       image: {
         src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/buy-or-sell?title=''`,
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy`,
+      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/sell`,
 
     })
   );

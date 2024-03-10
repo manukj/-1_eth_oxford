@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
 
+  const { untrustedData } = body
+
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
@@ -23,7 +25,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       image: {
         src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og?title=Buy`,
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order`,
+      input: {
+        text: 'Your Deposit Amount',
+      },
+      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order?deposit=${untrustedData.inputText}`,
     })
   );
 }

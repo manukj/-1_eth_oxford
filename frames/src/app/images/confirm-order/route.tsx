@@ -35,7 +35,7 @@ export async function GET(request: Request) {
             justifyContent: "center",
             flexDirection: "column",
             backgroundImage: `url('${process.env.NEXT_PUBLIC_SITE_URL}/sell.png')`,
-            backgroundSize: "100% 100%", 
+            backgroundSize: "100% 100%",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             fontSize: 30,
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
             }}
           >
             Current Price of Ether :
-            <span style={{ fontWeight: "bold", marginLeft: 5 }}>
+            <span style={{ fontWeight: 900, marginLeft: 5 }}>
               {parseFloat(eth ?? "0").toFixed(2)} USDC
             </span>
           </p>
@@ -67,8 +67,8 @@ export async function GET(request: Request) {
               textDecoration: "underline",
             }}
           >
-            Target Price After 20% margin :{parseFloat(tar ?? "0").toFixed(2)}{" "}
-            USDC
+            Targeting Price : {parseFloat(tar ?? "0").toFixed(2)} USDC
+            {" ( After 20% margin )"}
           </p>
           <hr></hr>
 
@@ -82,13 +82,8 @@ export async function GET(request: Request) {
             }}
           >
             After
-            <span
-              style={{
-                fontWeight: "bold",
-                marginLeft: 5,
-              }}
-            >
-              6 days
+            <span style={{ fontWeight: 900, marginLeft: 5 }}>
+              6 days ( FIXED PERIOD)
             </span>
           </p>
           <p
@@ -98,14 +93,21 @@ export async function GET(request: Request) {
               backgroundClip: "text",
               color: "white",
               fontSize: 30,
-              fontWeight: 900,
+              fontWeight: 500,
               margin: 0,
               marginTop: 20,
             }}
           >
             Price &gt;= Margin:
-            <span style={{ fontWeight: "900", marginLeft: 5 }}>
-              {parseFloat(ethHigh ?? "0").toFixed(2)} USDC
+            <span
+              style={{
+                fontWeight: 900,
+                marginLeft: 10,
+                fontSize: 35,
+                textDecoration: "underline",
+              }}
+            >
+              {parseFloat(ethHigh ?? "0").toFixed(4)} USDC
             </span>
           </p>
           <p
@@ -115,15 +117,34 @@ export async function GET(request: Request) {
               backgroundClip: "text",
               color: "white",
               fontSize: 30,
-              fontWeight: 900,
+              fontWeight: 500,
               margin: 0,
               marginTop: 20,
             }}
           >
             Price &lt;= Margin:
-            <span style={{ fontWeight: "900", marginLeft: 5, }}>
-              {parseFloat(ethLow ?? "0").toFixed(2)} ETH
+            <span
+              style={{
+                fontWeight: 900,
+                marginLeft: 10,
+                fontSize: 35,
+                textDecoration: "underline",
+              }}
+            >
+              {parseFloat(ethLow ?? "0").toFixed(4)} ETH
             </span>
+          </p>
+          <p
+            style={{
+              backgroundClip: "text",
+              color: "white",
+              fontSize: 25,
+              textDecoration: "underline",
+            }}
+          >
+            {" "}
+            Stake amount is approximate; actual amount calculated and credited
+            after 6 days.
           </p>
         </div>
       ),

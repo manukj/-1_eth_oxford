@@ -28,7 +28,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       input: {
         text: 'Your Deposit Amount',
       },
-      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order?deposit=${untrustedData.inputText}`,
+      postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/confirm-order?deposit=${untrustedData.inputText}&margin=0.2`,
     })
   );
 }

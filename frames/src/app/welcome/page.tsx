@@ -1,5 +1,7 @@
-import { getFrameMetadata } from '@coinbase/onchainkit/frame'
 import type { Metadata } from 'next'
+import { getFrameMetadata } from '@coinbase/onchainkit'
+
+
 
 const frameMetadata = getFrameMetadata({
   buttons: [

@@ -12,6 +12,10 @@ export async function GET(request: Request) {
 
     const walletAddress = searchParams.get("walletAddress") ?? "No balance";
 
+    const displayName = searchParams.get("displayName") ?? "";
+
+    const pfp = searchParams.get("pfp") ?? "";
+
     return new ImageResponse(
       (
         <div
@@ -26,22 +30,49 @@ export async function GET(request: Request) {
             backgroundSize: "100% 100%", 
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            fontSize: 80,
+            fontSize: 30,
             fontWeight: 700,
             textAlign: "center",
           }}
         >
+          
           <p
             style={{
               color: "white",
-              fontSize: 80,
-              fontWeight: 800,
+              fontSize: 60,
+              fontWeight: 1000,
               margin: 0,
               marginBottom: 10,
             }}
           >
             Verify your details
           </p>
+
+          
+          <p
+            style={{
+              color: "white",
+              fontSize: 30,
+              fontWeight: 800,
+              margin: 0,
+              marginBottom: 10,
+            }}
+          >
+              <img src={pfp} alt="Profile Picture" style={{ width: 100, height: 100, borderRadius: 50 }} />
+           </p>
+           <p
+            style={{
+              color: "white",
+              fontSize: 40,
+              fontWeight: 900,
+              margin: 0,
+              marginBottom: 10,
+            }}
+          >
+              Welcome {displayName}
+          </p>
+
+
 
           <p
             style={{
@@ -71,6 +102,7 @@ export async function GET(request: Request) {
             >
               Balance : {walletBalance}
             </p>
+
           )}
         </div>
       ),

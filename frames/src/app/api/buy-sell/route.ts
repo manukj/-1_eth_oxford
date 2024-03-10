@@ -17,7 +17,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/buy-or-sell?title=''`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/buy-or-sell`,
       },
       postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/sell`,
 

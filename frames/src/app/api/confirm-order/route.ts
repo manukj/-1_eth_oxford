@@ -10,13 +10,13 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const response = await fetch(url);
   const data = await response.json();
   const usd = data.result.ethusd;   
-  const ethAmount = parseInt(deposit) * parseInt(usd);
+  const ethAmount = parseFloat(deposit) * parseFloat(usd);
   console.log("depo"+deposit);
   console.log("usd"+usd);
 
   console.log("ethamount"+ethAmount);
   const ethAmountHigh = ethAmount + (ethAmount * 0.2);
-  const ethAmountLow = parseInt(deposit) + 0.01;
+  const ethAmountLow = parseFloat(deposit) + 0.01;
 
 
 

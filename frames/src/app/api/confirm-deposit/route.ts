@@ -1,9 +1,12 @@
-import { getFrameHtmlResponse } from "@coinbase/onchainkit/frame";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
 const { Alchemy, Network, Wallet, Utils } = require("alchemy-sdk");
 
 const { TEST_API_KEY, TEST_PRIVATE_KEY, WALLET_ADDRESS } = process.env;
+import { FrameRequest, getFrameMessage, getFrameHtmlResponse,getFrameMetadata } from '@coinbase/onchainkit';
+
+let displayName = "";
+let pfp = "";
 
 export function getEthBalance() {
   return fetch(
@@ -28,6 +31,38 @@ export function getEthBalance() {
 }
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
+
+  const body: FrameRequest = await req.json();
+
+
+  const { isValid, message } = await getFrameMessage(body, { neynarApiKey: process.env.NEYNAR_API_KEY });
+  let fid: number | undefined = 0;
+  console.log('isValid', isValid);
+  if (isValid) {
+    console.log('message', message);
+    fid = message.interactor.fid;
+    console.log('fid', fid);
+    const url = `https://api.neynar.com/v1/farcaster/user?fid=${fid}&viewerFid=3`;
+  const headers = {
+    'accept': 'application/json',
+    'api_key': `${process.env.NEYNAR_API_KEY}`
+  };
+
+  try {
+    const response = await fetch(url, { headers });
+    if (!response.ok) {
+      throw new Error(`Error fetching user: ${response.status}`);
+    }
+    const data = await response.json();
+    displayName = data.result.user.displayName; 
+    pfp = data.result.user.pfp.url; 
+
+  } catch (error) {
+    console.error('Error:', error);
+  }   
+
+  }
+
   var balance = await getEthBalance();
   var walletBalance = await balance.json();
   walletBalance = ethers.utils.formatEther(walletBalance.result);
@@ -42,7 +77,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-deposit?walletBalance=${walletBalance}&walletAddress=${WALLET_ADDRESS}`,
+        src: `${process.env.NEXT_PUBLIC_SITE_URL}/images/confirm-deposit?walletBalance=${walletBalance}&walletAddress=${WALLET_ADDRESS}&displayName=${displayName}&pfp=${pfp}`,
       },
       postUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/api/buy-sell`,
     })

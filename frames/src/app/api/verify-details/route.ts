@@ -1,7 +1,7 @@
 import {
   FrameRequest,
   getFrameHtmlResponse,
-  getFrameMessage
+  getFrameMessage,
 } from "@coinbase/onchainkit";
 import { ethers } from "ethers";
 import { NextRequest, NextResponse } from "next/server";
@@ -12,7 +12,7 @@ const { TEST_API_KEY, TEST_PRIVATE_KEY, WALLET_ADDRESS } = process.env;
 let displayName = "";
 let pfp = "";
 
-export function getEthBalance() {
+async function getEthBalance() {
   return fetch(
     `https://eth-sepolia.g.alchemy.com/v2/${process.env.TEST_API_KEY}`,
     {

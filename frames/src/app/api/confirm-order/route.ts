@@ -14,7 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const { untrustedData } = body;
   const depositAmount = untrustedData.inputText;
   const { searchParams } = new URL(req.url);
-  const stakeEarned = 0.01; // right now hardcoding it, but we can get it from Contract on Gnosis API
+  const stakeEarned = 0.001; // right now hardcoding it, but we can get it from Contract on Gnosis API
   const margin = parseFloat(searchParams.get("margin") ?? "0.2");
 
   const usd = await getLatestETHPrice();

@@ -134,6 +134,18 @@ export async function GET(request: Request) {
               {parseFloat(ethLow ?? "0").toFixed(2)} ETH
             </span>
           </p>
+          <p
+            style={{
+              backgroundClip: "text",
+              color: "white",
+              fontSize: 25,
+              textDecoration: "underline",
+            }}
+          >
+            {" "}
+            Stake amount is approximate; actual amount calculated and credited
+            after 6 days.
+          </p>
         </div>
       ),
       {

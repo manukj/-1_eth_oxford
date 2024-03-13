@@ -8,7 +8,7 @@
 ## Dual-Profit
 
 
-Currently we are focusing one investment Idea, Which we call as _**Dual-Profit**_
+Currently we are focusing one investment Idea, Which we call as _**2 Fold Capital**_
 
 Imagine trading a coin with a certain margin. What if I told you that you could earn a profit whether the margin of the coin is reached or not?
 
